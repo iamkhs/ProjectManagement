@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\V1\AuthController;
 use App\Http\Controllers\API\V1\ProjectController;
+use App\Http\Controllers\API\V1\ReportController;
 use App\Http\Controllers\API\V1\SubTaskController;
 use App\Http\Controllers\API\V1\TaskController;
 use Illuminate\Http\Request;
@@ -63,4 +64,10 @@ Route::middleware('auth:api')->group(function () {
 
     Route::patch('/subtasks/{id}/assign', [SubTaskController::class, 'assign']);
     Route::patch('/subtasks/{id}/unassign', [SubTaskController::class, 'unassign']);
+
+
+    Route::prefix('reports/projects')->group(function () {
+        Route::get('/ ', [ReportController::class, 'generateProjectReport']);
+        Route::get('/export', [ReportController::class, 'exportProjectReport']);
+    });
 });
