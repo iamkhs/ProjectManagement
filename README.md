@@ -82,6 +82,13 @@ PUSHER_APP_KEY=appkey
 PUSHER_APP_SECRET=appsecret
 PUSHER_APP_CLUSTER=appcluster
 ```
+### Run the Laravel queue worker:
+
+For efficient performance and to handle event broadcasting properly, you must run the Laravel queue worker:
+
+```bash
+php artisan queue:work
+```
 
 ## Authentication
 
