@@ -2,12 +2,75 @@
 
 ## Overview
 
-This is a RESTful Laravel API for a Project Management System with Role-Based Access Control (RBAC).  
-It allows managing Projects, Tasks, and Subtasks with real-time notifications and detailed reporting.
+This is a RESTful Laravel API for a **Project Management System** with **Role-Based Access Control (RBAC)**.  
+It allows managing **Projects**, **Tasks**, and **Subtasks** with real-time notifications and detailed reporting.
 
-> **Note:** Caching, and Unit Testing are not implemented.
+> **Note:** Caching and Unit Testing are not implemented.
+
+
+## Requirements
+
+- **PHP** >= 8.0
+- **Laravel** >= 10.0
+- **MySQL** or any compatible database
+- **Composer** (for dependency management)
 
 ---
+
+## Installation
+
+### Step 1: Clone the Repository
+
+Clone the project from GitHub to your local machine:
+
+```bash
+git clone https://github.com/your-repository/project-management-api.git
+```
+
+### Run Migrations and Seed Database
+Run the database migrations and seed the database with sample data:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+### Setup .env for Database
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_username
+DB_PASSWORD=your_database_password
+```
+
+### RBAC Implementation
+The **Role-Based Access Control (RBAC)** is implemented using Laravel's **Gate Policy** without any third-party packages.  
+This ensures that only authorized users can access or perform actions on specific resources, such as creating, updating, or deleting projects, tasks, and subtasks.  
+The roles are defined in the Laravel `Gate` and `Policy`, and the access control is enforced throughout the application based on user roles and permissions.
+
+---
+
+### Real-Time Notifications
+The application implements **real-time notifications** using **Laravel Broadcasting** and **Pusher**.  
+Notifications are triggered when a user is assigned a task or subtask, allowing team members and leaders to receive immediate updates.
+
+To configure real-time notifications with Pusher:
+
+1. Set up the **Pusher** service in your `.env` file:
+
+```env
+BROADCAST_DRIVER=pusher
+
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+PUSHER_APP_ID=appid
+PUSHER_APP_KEY=appkey
+PUSHER_APP_SECRET=appsecret
+PUSHER_APP_CLUSTER=appcluster
+```
 
 ## Authentication
 
@@ -305,3 +368,10 @@ For both routes (`generateProjectReport` and `exportProjectReport`), the followi
 #### Generate Project Report
 ```http
 GET /api/reports/projects?start_date=2025-01-01&end_date=2025-04-01&project_id=123
+```
+
+### Report Export
+The exportProjectReport method uses the **_Maatwebsite Excel package_** to export the project report in Excel format. The package is configured to download the report as an .xlsx file.
+
+**Package Used
+Maatwebsite Excel**: A package for importing and exporting Excel files in Laravel. It provides a convenient API to handle Excel downloads and exports in various formats.
