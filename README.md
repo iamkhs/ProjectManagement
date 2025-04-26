@@ -3,9 +3,20 @@
 ## Overview
 
 This is a RESTful Laravel API for a **Project Management System** with **Role-Based Access Control (RBAC)**.  
-It allows managing **Projects**, **Tasks**, and **Subtasks** with real-time notifications and detailed reporting.
+It allows managing **Projects**, **Tasks**, and **Subtasks** with **real-time notifications** and **detailed reporting**.
 
-> **Note:** Caching and Unit Testing are not implemented.
+> **Note:** Caching and Unit Testing are not implemented.  
+
+---
+
+## Features
+
+- **RBAC (Role-Based Access Control)**: Implemented using Laravel's built-in **Gate Policy** without third-party packages.
+- **Real-Time Notifications**: Using **Laravel Broadcasting** and **Pusher** to notify users when tasks or subtasks are assigned.
+- **Project and Task Management**: Ability to create, update, and delete projects, tasks, and subtasks.
+- **Detailed Reporting**: Allows the generation and export of project reports in Excel format.
+- **Seeding**: Pre-configured seeding for demo users with admin, team leaders, and team members.
+- **Exception Handling**: The system uses **custom exception handling** to manage different error scenarios and return user-friendly responses.
 
 
 ## Requirements
