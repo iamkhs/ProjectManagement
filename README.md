@@ -17,6 +17,7 @@ It allows managing **Projects**, **Tasks**, and **Subtasks** with **real-time no
 - **Detailed Reporting**: Allows the generation and export of project reports in Excel format.
 - **Seeding**: Pre-configured seeding for demo users with admin, team leaders, and team members.
 - **Exception Handling**: The system uses **custom exception handling** to manage different error scenarios and return user-friendly responses.
+- **Three-Layer Architecture**: Follows a clean **Controller → Service → Repository** structure for better maintainability, scalability, and separation of concerns.
 
 
 ## Requirements
