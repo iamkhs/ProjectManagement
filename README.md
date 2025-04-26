@@ -24,7 +24,7 @@ It allows managing **Projects**, **Tasks**, and **Subtasks** with real-time noti
 Clone the project from GitHub to your local machine:
 
 ```bash
-git clone https://github.com/your-repository/project-management-api.git
+git clone https://github.com/iamkhs/ProjectManagement.git
 ```
 
 ### Run Migrations and Seed Database
