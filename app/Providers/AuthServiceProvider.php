@@ -11,6 +11,7 @@ use App\Policies\ReportPolicy;
 use App\Policies\SubtaskPolicy;
 use App\Policies\TaskPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -32,7 +33,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->registerPolicies();
 
+        Gate::define('generate-report', [ReportPolicy::class, 'generateReport']);
+        Gate::define('export-report', [ReportPolicy::class, 'exportReport']);
 
     }
 }

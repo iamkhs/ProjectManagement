@@ -14,13 +14,13 @@ class ReportPolicy
         //
     }
 
-    public function view(User $user): bool
+    public function generateReport(User $user): bool
     {
         return in_array($user->role, ['admin', 'team_leader']);
     }
 
-    public function export(User $user): bool
+    public function exportReport(User $user): bool
     {
-        return $this->view($user);
+        return $this->generateReport($user);
     }
 }

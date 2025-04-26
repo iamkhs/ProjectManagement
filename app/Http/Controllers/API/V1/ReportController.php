@@ -20,6 +20,8 @@ class ReportController extends Controller
             'project_id' => 'nullable|exists:projects,id',
         ]);
 
+        $this->authorize('generate-report');
+
         $report = $this->reportService->generateProjectReport($validated);
 
         return response()->json($report);
@@ -32,6 +34,8 @@ class ReportController extends Controller
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'project_id' => 'nullable|exists:projects,id'
         ]);
+
+        $this->authorize('export-report');
 
         $report = $this->reportService->generateProjectReport($validated);
 

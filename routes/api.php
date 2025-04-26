@@ -67,7 +67,8 @@ Route::middleware('auth:api')->group(function () {
 
 
     Route::prefix('reports/projects')->group(function () {
-        Route::get('/ ', [ReportController::class, 'generateProjectReport']);
+        Route::get('/', [ReportController::class, 'generateProjectReport']);
         Route::get('/export', [ReportController::class, 'exportProjectReport']);
     });
+
 });
