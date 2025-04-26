@@ -7,7 +7,6 @@ use App\Services\ReportExportService;
 use App\Services\ReportService;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ReportController extends Controller
 {
@@ -26,7 +25,7 @@ class ReportController extends Controller
         return response()->json($report);
     }
 
-    public function exportProjectReport(Request $request): BinaryFileResponse
+    public function exportProjectReport(Request $request)
     {
         $validated = $request->validate([
             'start_date' => 'nullable|date|before_or_equal:end_date',

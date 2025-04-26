@@ -22,7 +22,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 6000000
+            'expires_in' => JWTAuth::factory()->getTTL() * 60
         ]);
     }
 
@@ -33,6 +33,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'name'  => $request->name,
+            'role'  => $request->role
         ]);
 
 
@@ -43,7 +44,7 @@ class AuthController extends Controller
             'user' => $user,
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 600000
+            'expires_in' => JWTAuth::factory()->getTTL() * 60
         ]);
     }
 
@@ -56,15 +57,6 @@ class AuthController extends Controller
     {
         auth()->logout();
         return response()->json(['message' => 'Successfully logged out']);
-    }
-
-    public function refresh()
-    {
-        return response()->json([
-            'access_token' => auth()->refresh(),
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
-        ]);
     }
 
 }

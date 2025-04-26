@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Exceptions\SubTaskCreationException;
-use App\Exceptions\SubTaskUpdateException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubTaskStoreRequest;
 use App\Http\Requests\SubTaskUpdateRequest;
